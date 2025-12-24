@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cartão de Natal João❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comic Sans MS", Arial, cursive;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle, #8e0000, #b71c1c, #4a0000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ❄️ NEVE */
+.snow {
+  position: fixed;
+  top: -10px;
+  font-size: 22px;
+  animation: cair 8s linear infinite;
+  z-index: 1;
+  color: #fff;
+}
+
+@keyframes cair {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* ❤️ CORAÇÕES */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: subir 6s linear infinite;
+  z-index: 1;
+}
+
+@keyframes subir {
+  from { transform: translateY(0); opacity: 0; }
+  to { transform: translateY(-110vh); opacity: 1; }
+}
+
+/* ✨ ESTRELAS */
+.star {
+  position: fixed;
+  color: gold;
+  font-size: 12px;
+  animation: piscarEstrela 1.5s infinite alternate;
+  z-index: 1;
+}
+
+@keyframes piscarEstrela {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+/* 💫 ANIMAÇÃO PULANDINHO */
+@keyframes pulinho {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+
+/* 🎄 ÁRVORES (PULANDO) */
+.arvore {
+  position: fixed;
+  top: 30px;
+  width: 140px;
+  z-index: 2;
+  filter: drop-shadow(0 0 8px gold);
+  animation: pulinho 3.5s ease-in-out infinite alternate;
+}
+
+.arvore.esquerda { left: 20px; }
+.arvore.direita { right: 20px; }
+
+/* 🐱 HELLO KITTY (PULANDO) */
+.side-image {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  width: 320px;
+  z-index: 2;
+  animation: pulinho 2s ease-in-out infinite alternate;
+}
+
+/* 💖 FOTOS (SEM MOLDURA, LEVINHAS) */
+.photo {
+  position: fixed;
+  width: 220px;
+  z-index: 2;
+  animation: pulinho 3s ease-in-out infinite alternate;
+}
+
+.photo-left {
+  left: 20px;
+  bottom: 160px;
+}
+
+.photo-right {
+  right: 200px;
+  bottom: 400px;
+}
+
+.photo img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* 🎁 CARTÃO */
+.card {
+  width: 98%;
+  max-width: 500px;
+  background: linear-gradient(135deg, #fff3d6, #ffd89b);
+  border-radius: 30px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 0 25px gold, 0 0 50px red;
+  border: 6px solid gold;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.top-gif img {
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 14px;
+}
+
+.closed { display: block; }
+.open .closed { display: none; }
+
+.message { display: none; }
+.open .message { display: block; }
+
+.to {
+  font-weight: bold;
+  color: #b71c1c;
+  margin-top: 10px;
+}
+
+.from, .assinatura {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: red;
+  animation: piscarVermelho 1s infinite alternate;
+}
+
+@keyframes piscarVermelho {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* 🎶 BOTÕES */
+.music-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 5;
+}
+
+.music-controls button {
+  background: red;
+  color: white;
+  border: 3px solid gold;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+iframe {
+  width: 0;
+  height: 0;
+  border: 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ❄️ NEVE -->
+<div class="snow" style="left:10%">❄</div>
+<div class="snow" style="left:40%">❄</div>
+
+<!-- ❤️ CORAÇÕES -->
+<div class="heart" style="left:20%">❤️</div>
+<div class="heart" style="left:70%">💖</div>
+
+<!-- ✨ ESTRELAS -->
+<div class="star" style="top:20%; left:10%">⭐</div>
+<div class="star" style="top:60%; left:80%">⭐</div>
+
+<!-- 🎄 ÁRVORES -->
+<img src="arvore.gif" class="arvore esquerda">
+<img src="arvore.gif" class="arvore direita">
+
+<!-- 💖 FOTOS -->
+<div class="photo photo-left">
+  <img src="foto-esquerda.png">
+</div>
+
+<div class="photo photo-right">
+  <img src="foto-direita.png">
+</div>
+
+<!-- 🐱 HELLO KITTY -->
+<img src="hello-kitty.gif" class="side-image">
+
+<!-- 🎵 PLAYER -->
+<iframe id="ytPlayer" allow="autoplay; encrypted-media"></iframe>
+
+<!-- 🎶 BOTÕES -->
+<div class="music-controls">
+  <button id="playBtn">▶️ Tocar</button>
+  <button id="stopBtn">⏹️ Parar</button>
+</div>
+
+<!-- 🎁 CARTÃO -->
+<div class="card" id="card">
+  <div class="top-gif">
+    <img src="feliz-natal.gif">
+  </div>
+
+  <div class="closed">
+    <p>✨ Clique para abrir ✨</p>
+  </div>
+
+  <div class="message">
+    <p class="to">Para: João BK</p>
+
+    <p>
+      Meu amor, te desejo um feliz natal💖✨
+      
+    </p>
+    <p>Este é o nosso primeiro natal juntos, e eu to muito feliz, espero que eu possa passar todos os próximos do seu lado.
+      Fiz essa cartinha com muito carinho pra ti, com muita sinceridade e um pouco de brincadeira também haha (música).
+      Quero que saiba que conhecer você esse ano foi uma das coisas mais incríveis que aconteceu. Obrigada por ser quem é, um amorzinho, querido, gentil, zoeiro e um home incrível.
+      E também quero te agradecer por me aguentar todos os dias hihi assim como eu tenho vontade de te esganar as vezes :3 
+      <p>Tu é muito especial pra mim, mais do que voce imagina</p>
+     
+     <p>Eu amo você, meu doce Cblinho💙</p> 
+     <p>2025</p>
+    </p>
+
+    <p class="from">
+      Com carinho,<br>
+      <span class="assinatura">Elo</span>
+    </p>
+  </div>
+</div>
+
+<script>
+const card = document.getElementById("card");
+card.onclick = () => card.classList.toggle("open");
+
+const yt = document.getElementById("ytPlayer");
+const playBtn = document.getElementById("playBtn");
+const stopBtn = document.getElementById("stopBtn");
+
+playBtn.onclick = () => {
+  yt.src =
+    "https://www.youtube.com/embed/u8TI8HP5fwE?autoplay=1&start=11&end=31&controls=0";
+};
+
+stopBtn.onclick = () => {
+  yt.src = "";
+};
+</script>
+
+</body>
+</html>
